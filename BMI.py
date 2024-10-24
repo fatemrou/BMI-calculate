@@ -1,9 +1,5 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-# def BMI_show () :
-#     app =ttk.Window("BMI","solar", resizable=(False, False))
-#     BMI_answer_lbl = ttk.Label(app, text="BMI_answer")
-#     BMI_answer_lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
 def calculate_BMI () :
     height_cm = int(height_int.get())
     weight = int(weight_int.get())
