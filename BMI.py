@@ -1,43 +1,42 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
+# def BMI_show () :
+#     app =ttk.Window("BMI","solar", resizable=(False, False))
+#     BMI_answer_lbl = ttk.Label(app, text="BMI_answer")
+#     BMI_answer_lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
 def calculate_BMI () :
     height_cm = int(height_int.get())
-    height_m = height_cm/100
     weight = int(weight_int.get())
-    # BMI = weight/height_m**2
+    height_m = height_cm/100
     return(round(weight/height_m**2 , 2))
 def age_max_BMI():
     BMI = calculate_BMI()
     if BMI < 18.5 :
-        print("underweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.5 < BMI < 24.5 :
-        print("healthy weight")
+        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 24.5 < BMI < 29.9 :
-        print("overweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
-        print("fat")    
-def BMI_show () :
-    app =ttk.Window("BMI","solar", resizable=(False, False))
-    BMI_answer_lbl = ttk.Label(app, text="BMI_answer")
-    BMI_answer_lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
+        print(f"the BMI is : {calculate_BMI()} the result is : fat")    
 def girl_BMI () :
     BMI = calculate_BMI()
     if BMI < 18.3 :
-        print("underweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.3 < BMI < 22.7 :
-        print("healthy weight")
+        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 22.7 < BMI < 26.5 :
-        print("overweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
-        print("fat")
+        print(f"the BMI is : {calculate_BMI()} the result is : fat")
 def boy_BMI () :
     BMI = calculate_BMI()
     if BMI < 18.7 :
-        print("underweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.7 < BMI < 22.2 :
-        print("healthy weight")
+        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 22.2 < BMI < 24.7 :
-        print("overweight")
+        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
         print("fat") 
 def male_female () :
@@ -45,13 +44,6 @@ def male_female () :
     age_boy.grid(column=0, row=5, sticky=ttk.EW, padx=10, pady=5)
     age_girl = ttk.Checkbutton(window, text='girl', bootstyle="secondary", command=girl_BMI )
     age_girl.grid(column=0, row=6, sticky=ttk.EW, padx=10, pady=5)
-def show_answer () :
-    window_answer = ttk.Window("BMI ","solar", resizable=(False, False))
-    lbl = ttk.Label(window_answer, text="youre BMI answer")
-    lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
-    # lbl_answer = ttk.Label(window_answer, text="youre BMI answer")
-    # lbl_answer.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
-
 window = ttk.Window("BMI ","solar", resizable=(False, False))
 BMI_lbl = ttk.Label(window, text="BMI_Calculation")
 BMI_lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
@@ -71,6 +63,6 @@ age_btn.grid(column=0, row=3, sticky=ttk.EW, padx=10, pady=5)
 age_btn_1 = ttk.Checkbutton(window, text='age < 19 ', bootstyle="secondary",command=male_female )
 age_btn_1.grid(column=0, row=4, sticky=ttk.EW, padx=10, pady=5)
 #apply-----------------
-submit_btn = ttk.Button(window, bootstyle="danger" , text="apply", command=show_answer)
+submit_btn = ttk.Button(window, bootstyle="danger" , text="apply")
 submit_btn.grid(columnspan=2, row=7, sticky=ttk.EW, padx=10, pady=5)
 window.mainloop()
