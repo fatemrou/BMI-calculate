@@ -8,38 +8,39 @@ def calculate_BMI () :
 def age_max_BMI():
     BMI = calculate_BMI()
     if BMI < 18.5 :
-        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.5 < BMI < 24.5 :
-        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
+        return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 24.5 < BMI < 29.9 :
-        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
-        print(f"the BMI is : {calculate_BMI()} the result is : fat")    
+        return(f"the BMI is : {calculate_BMI()} the result is : fat")    
 def girl_BMI () :
     BMI = calculate_BMI()
     if BMI < 18.3 :
-        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.3 < BMI < 22.7 :
-        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
+        return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 22.7 < BMI < 26.5 :
-        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
-        print(f"the BMI is : {calculate_BMI()} the result is : fat")
+        return(f"the BMI is : {calculate_BMI()} the result is : fat")
 def boy_BMI () :
     BMI = calculate_BMI()
     if BMI < 18.7 :
-        print(f"the BMI is : {calculate_BMI()} the result is : underweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : underweight")
     elif 18.7 < BMI < 22.2 :
-        print(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
+        return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
     elif 22.2 < BMI < 24.7 :
-        print(f"the BMI is : {calculate_BMI()} the result is : overweight")
+        return(f"the BMI is : {calculate_BMI()} the result is : overweight")
     else :
-        print("fat") 
+        return("fat") 
 def male_female () :
     age_boy= ttk.Checkbutton(window, text="boy ", bootstyle="secondary", command=boy_BMI)
     age_boy.grid(column=0, row=5, sticky=ttk.EW, padx=10, pady=5)
     age_girl = ttk.Checkbutton(window, text='girl', bootstyle="secondary", command=girl_BMI )
     age_girl.grid(column=0, row=6, sticky=ttk.EW, padx=10, pady=5)
+#window---------------
 window = ttk.Window("BMI ","solar", resizable=(False, False))
 BMI_lbl = ttk.Label(window, text="BMI_Calculation")
 BMI_lbl.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
