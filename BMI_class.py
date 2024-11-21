@@ -11,20 +11,36 @@ class calculate_BMI:
     
     def calculate_bmi(self) -> float:
         return(round(self.width/self.height_m**2 , 2))
-
 class min_boy_BMI(calculate_BMI) :
+
     def __init__(self, height_int, weight_int) -> float:
         super().__init__(height_int, weight_int)
+        self.BMI = super().calculate_bmi()
+      
     def BMI_boy (self) :
-        if calculate_bmi< 18.7 :
+        if self.BMI< 18.7 :
             return(f"the BMI is : {calculate_BMI()} the result is : underweight")
-        elif 18.7 < BMI < 22.2 :
+        elif 18.7 < self.BMI < 22.2 :
             return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
-        elif 22.2 < BMI < 24.7 :
+        elif 22.2 < self.BMI < 24.7 :
             return(f"the BMI is : {calculate_BMI()} the result is : overweight")
         else :
             return("fat") 
+class min_girl_BMI(calculate_BMI) :
 
+    def __init__(self, height_int, weight_int) -> float:
+        super().__init__(height_int, weight_int)
+        self.BMI = super().calculate_bmi()
+      
+    def BMI_girl (self) :
+        if self.BMI< 18.3 :
+            return(f"the BMI is : {calculate_BMI()} the result is : underweight")
+        elif 18.7 < self.BMI < 22.7 :
+            return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
+        elif 22.2 < self.BMI < 26.5 :
+            return(f"the BMI is : {calculate_BMI()} the result is : overweight")
+        else :
+            return("fat") 
 class Interface_1(ttk.Window): 
     def __init__(self):
         super().__init__()
@@ -86,7 +102,6 @@ class Interface_1(ttk.Window):
         #answer-----------------
         submit_btn = ttk.Button(bootstyle="danger" , text="answer")
         submit_btn.grid(columnspan=2, row=7, sticky=ttk.EW, padx=10, pady=5)
-
 
 
 
