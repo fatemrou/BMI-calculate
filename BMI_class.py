@@ -37,7 +37,22 @@ class min_girl_BMI(calculate_BMI) :
             return(f"the BMI is : {calculate_BMI()} the result is : underweight")
         elif 18.7 < self.BMI < 22.7 :
             return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
-        elif 22.2 < self.BMI < 26.5 :
+        elif 22.2 < self.BMI < 29.9 :
+            return(f"the BMI is : {calculate_BMI()} the result is : overweight")
+        else :
+            return("fat")
+class max_BMI(calculate_BMI) :
+
+    def __init__(self, height_int, weight_int) -> float:
+        super().__init__(height_int, weight_int)
+        self.BMI = super().calculate_bmi()
+      
+    def BMI_max (self) :
+        if self.BMI< 18.5 :
+            return(f"the BMI is : {calculate_BMI()} the result is : underweight")
+        elif 18.7 < self.BMI < 24.5 :
+            return(f"the BMI is : {calculate_BMI()} the result is : healthy weight")
+        elif 22.2 < self.BMI < 24.7 :
             return(f"the BMI is : {calculate_BMI()} the result is : overweight")
         else :
             return("fat") 
@@ -73,21 +88,20 @@ class Interface_1(ttk.Window):
                                           command= self.age_period_result)
         self.age_period.grid(column=0, row=4, sticky=ttk.EW, padx=10, pady=5)
     def age_period_result(self):
-        message = "لطفا بازه سنی خود را انتخاب کنید"
         if self.adult_bmi.get():
             message = "بازه سنی شما بیشتر از 19 سال است"
         else:
-            self.adult_bmi = ttk.BooleanVar()
-            self.adult_bmi.set(True)
+            self.adult_bmi = ttk.IntVar()
+            self.adult_bmi.set(0)
             self.age_period = ttk.Radiobutton(self,
                                             text ='دختر',
-                                            value = True,
+                                            value = 0,
                                             variable = self.adult_bmi,
                                             command= self.age_period_result)
             self.age_period.grid(column=0, row=3, sticky=ttk.EW, padx=10, pady=5)
             self.age_period = ttk.Radiobutton(self,
                                             text ='پسر',
-                                            value = False,
+                                            value = 1,
                                             variable = self.adult_bmi,
                                             command= self.age_period_result)
             self.age_period.grid(column=0, row=4, sticky=ttk.EW, padx=10, pady=5)
