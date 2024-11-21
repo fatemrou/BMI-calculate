@@ -42,7 +42,6 @@ class min_girl_BMI(calculate_BMI) :
         else :
             return("fat")
 class max_BMI(calculate_BMI) :
-
     def __init__(self, height_int, weight_int) -> float:
         super().__init__(height_int, weight_int)
         self.BMI = super().calculate_bmi()
@@ -55,11 +54,10 @@ class max_BMI(calculate_BMI) :
         elif 22.2 < self.BMI < 24.7 :
             return(f"the BMI is : {calculate_BMI()} the result is : overweight")
         else :
-            return("fat") 
-class Interface_1(ttk.Window): 
+            return("fat")        
+class Interface_1(ttk.Window , answer): 
     def __init__(self):
         super().__init__()
-
         BMI_lbl_1 = ttk.Label(text="BMI_Calculation")
         BMI_lbl_1.grid(columnspan=2, row=0, sticky=ttk.N, padx=20, pady=5)
         #height---------------
@@ -72,6 +70,9 @@ class Interface_1(ttk.Window):
         weight_lbl.grid(column=0, row=2, sticky=ttk.W, padx=10, pady=5)
         weight_int = ttk.Entry(bootstyle="success", text="Example : 45 kg" )
         weight_int.grid(column=1, row=2, sticky=ttk.W, padx=10, pady=5)
+        #answer-----------------
+        submit_btn = ttk.Button(bootstyle="danger" , text="answer" , command= answer)
+        submit_btn.grid(columnspan=2, row=6, sticky=ttk.EW, padx=10, pady=5)
         #age--------------------
         self.adult_bmi = ttk.BooleanVar()
         self.adult_bmi.set(True)
@@ -89,33 +90,42 @@ class Interface_1(ttk.Window):
         self.age_period.grid(column=0, row=4, sticky=ttk.EW, padx=10, pady=5)
     def age_period_result(self):
         if self.adult_bmi.get():
-            message = "بازه سنی شما بیشتر از 19 سال است"
+            return True
         else:
-            self.adult_bmi = ttk.IntVar()
-            self.adult_bmi.set(0)
+            self.bmi = ttk.IntVar()
+            self.bmi.set(0)
             self.age_period = ttk.Radiobutton(self,
                                             text ='دختر',
                                             value = 0,
-                                            variable = self.adult_bmi,
+                                            variable = self.bmi,
                                             command= self.age_period_result)
             self.age_period.grid(column=0, row=3, sticky=ttk.EW, padx=10, pady=5)
             self.age_period = ttk.Radiobutton(self,
                                             text ='پسر',
                                             value = 1,
-                                            variable = self.adult_bmi,
+                                            variable = self.bmi,
                                             command= self.age_period_result)
             self.age_period.grid(column=0, row=4, sticky=ttk.EW, padx=10, pady=5)
         def age_period_result(self):
-            if self.adult_bmi.get():
-                message = "بازه سنی شما بیشتر از 19 سال است"
+            
+            if self.bmi.get() == 0 :  
+                return 0
             else:
-                message = "بازه سنی شما کمتر از 19 سال است"
-            Messagebox.show_info(title = "نتیجه انتخاب بازه سنی" , message = message)            
+                return 1
+class answer (calculate_BMI , min_girl_BMI , min_boy_BMI , max_BMI) :
+        def __init__(self, height_int, weight_int) -> float:
+            super().__init__(height_int, weight_int)
+        def answer (self) :
+            self.adult_bmi = True
+            self.bmi = 0
+            if self.adult_bmi == True :
+                return max_BMI
+            else :
+                if self.bmi == 0 :
+                    return min_girl_BMI
+                else :
+                    return min_boy_BMI
 
-        Messagebox.show_info(title = "نتیجه انتخاب بازه سنی" , message = message)            
-        #answer-----------------
-        submit_btn = ttk.Button(bootstyle="danger" , text="answer")
-        submit_btn.grid(columnspan=2, row=7, sticky=ttk.EW, padx=10, pady=5)
 
 
 
